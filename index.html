@@ -9,15 +9,18 @@
   <link rel="stylesheet" href="style/style-common.css" />
 </head>
 
+  <!--
  <script src="node_modules/angular/angular.min.js"></script>
  <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
  <script src="node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
  <script src="node_modules/javascript-detect-element-resize/detect-element-resize.js"><script>
  <script src="node_modules/angular-gridster/dist/angular-gridster.min.js"></script>
+  -->
+  <script src="dist/bundle.js"></script>
 
   <body>
     <div ng-app="dashboardApp" ng-controller="DashboardCtrl">
-      <div class="container" ui-view>
+      <div class="container">
         <div class="page-header">
         	<a class="pull-right btn btn-primary" ng-click="addWidget()"><i class="glyphicon glyphicon-plus"></i> Add Widget</a>
         	<a class="pull-right btn btn-warning" ng-click="clear()"><i class="glyphicon glyphicon-trash"></i> Clear</a>
@@ -26,7 +29,7 @@
         	</select>
         </div>
 
-        <div gridster="gridsterOptions" class="gridster gridster-desktop gridster-loaded"">
+        <div gridster="gridsterOptions">
         	<ul>
         		<li gridster-item="widget" ng-repeat="widget in dashboard.widgets">
         			<div class="box" ng-controller="CustomWidgetCtrl">
@@ -46,8 +49,6 @@
       </div>
 
     </div>
-
-    <script src="app/app.js"></script>
 
   </body>
 </html>

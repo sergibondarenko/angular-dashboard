@@ -4,6 +4,7 @@
   "description": "Angular 1.5 dashboard app with widgets",
   "main": "index.js",
   "scripts": {
+    "build": "rimraf dist && webpack --bail --progress --profile",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,9 +22,10 @@
     "angular": "^1.5.11",
     "angular-gridster": "^0.13.14",
     "angular-ui-bootstrap": "^0.12.1",
-    "@uirouter/angularjs": "^1.0.3",
+    "angular-ui-router": "^1.0.3",
     "bootstrap": "^3.3.7",
-    "javascript-detect-element-resize": "^0.5.3"
+    "javascript-detect-element-resize": "^0.5.3",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

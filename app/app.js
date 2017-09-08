@@ -1,4 +1,11 @@
-var app = angular.module('dashboardApp', [
+import 'angular';
+import 'angular-ui-router';
+import 'angular-gridster';
+import '../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js';
+import 'javascript-detect-element-resize';
+
+
+const app = angular.module('dashboardApp', [
     'ui.router',
     'ui.bootstrap',
     'gridster'
