@@ -160,7 +160,7 @@ app.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope', '$moda
 app.filter('object2Array', function() {
 	return function(input) {
 		var out = [];
-		for (i in input) {
+		for (let i in input) {
 			out.push(input[i]);
 		}
 		return out;
