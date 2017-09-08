@@ -1,4 +1,12 @@
-var app = angular.module('dashboardApp', ['ui.bootstrap']);
+var app = angular.module('dashboardApp', [
+    'ui.router',
+    'ui.bootstrap',
+    'gridster'
+]);
+
+app.config(function ($urlRouterProvider) {
+  $urlRouterProvider.otherwise('/');
+});
 
 app.controller('DashboardCtrl', ['$scope', '$timeout',
 	function($scope, $timeout) {

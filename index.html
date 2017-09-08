@@ -6,39 +6,43 @@
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="node_modules/angular-gridster/dist/angular-gridster.min.css" />
   <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="style/style-common.css" />
 </head>
 
  <script src="node_modules/angular/angular.min.js"></script>
+ <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
  <script src="node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js"></script>
+ <script src="node_modules/javascript-detect-element-resize/detect-element-resize.js"><script>
  <script src="node_modules/angular-gridster/dist/angular-gridster.min.js"></script>
 
   <body>
     <div ng-app="dashboardApp" ng-controller="DashboardCtrl">
-      <h1>{{greet}}</h1>
-      <div class="page-header">
-      	<a class="pull-right btn btn-primary" ng-click="addWidget()"><i class="glyphicon glyphicon-plus"></i> Add Widget</a>
-      	<a class="pull-right btn btn-warning" ng-click="clear()"><i class="glyphicon glyphicon-trash"></i> Clear</a>
-      	<h1 style="display: inline-block; width: 200px;">Dashboard</h1>
-      	<select class="form-control" style="width: 150px; margin-bottom: 20px; display:inline-block;" ng-change="changeDashboard()" ng-model="selectedDashboardId" ng-options="d.id as d.name for d in dashboards | object2Array | orderBy:'id'">
-      	</select>
-      
-      </div>
-      <div gridster="gridsterOptions">
-      	<ul>
-      		<li gridster-item="widget" ng-repeat="widget in dashboard.widgets">
-      			<div class="box" ng-controller="CustomWidgetCtrl">
-      				<div class="box-header">
-      					<h3>{{ widget.name }}</h3>
-      					<div class="box-header-btns pull-right">
-      						<a title="settings" ng-click="openSettings(widget)"><i class="glyphicon glyphicon-cog"></i></a>
-      						<a title="Remove widget" ng-click="remove(widget)"><i class="glyphicon glyphicon-trash"></i></a>
-      					</div>
-      				</div>
-      				<div class="box-content">
-      				</div>
-      			</div>
-      		</li>
-      	</ul>
+      <div class="container" ui-view>
+        <div class="page-header">
+        	<a class="pull-right btn btn-primary" ng-click="addWidget()"><i class="glyphicon glyphicon-plus"></i> Add Widget</a>
+        	<a class="pull-right btn btn-warning" ng-click="clear()"><i class="glyphicon glyphicon-trash"></i> Clear</a>
+        	<h1 style="display: inline-block; width: 200px;">Dashboard</h1>
+        	<select class="form-control" style="width: 150px; margin-bottom: 20px; display:inline-block;" ng-change="changeDashboard()" ng-model="selectedDashboardId" ng-options="d.id as d.name for d in dashboards | object2Array | orderBy:'id'">
+        	</select>
+        </div>
+
+        <div gridster="gridsterOptions" class="gridster gridster-desktop gridster-loaded"">
+        	<ul>
+        		<li gridster-item="widget" ng-repeat="widget in dashboard.widgets">
+        			<div class="box" ng-controller="CustomWidgetCtrl">
+        				<div class="box-header">
+        					<h3>{{ widget.name }}</h3>
+        					<div class="box-header-btns pull-right">
+        						<a title="settings" ng-click="openSettings(widget)"><i class="glyphicon glyphicon-cog"></i></a>
+        						<a title="Remove widget" ng-click="remove(widget)"><i class="glyphicon glyphicon-trash"></i></a>
+        					</div>
+        				</div>
+        				<div class="box-content">
+        				</div>
+        			</div>
+        		</li>
+        	</ul>
+        </div>
       </div>
 
     </div>
