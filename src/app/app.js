@@ -4,6 +4,12 @@ import 'angular-gridster';
 import 'angular-ui-bootstrap';
 import 'javascript-detect-element-resize';
 
+import '../style/style.css';
+import '../style/style-common.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'angular-gridster/dist/angular-gridster.min.css';
+
+import widgetSettings from './templates/widget_settings.html';
 
 const app = angular.module('dashboardApp', [
     'ui.router',
@@ -99,7 +105,7 @@ app.controller('CustomWidgetCtrl', ['$scope', '$uibModal',
 		$scope.openSettings = function(widget) {
 			$uibModal.open({
 				scope: $scope,
-				templateUrl: 'templates/widget_settings.html',
+				templateUrl: widgetSettings,
 				controller: 'WidgetSettingsCtrl',
 				resolve: {
 					widget: function() {
