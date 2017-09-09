@@ -21,7 +21,7 @@
   "dependencies": {
     "angular": "^1.5.11",
     "angular-gridster": "^0.13.14",
-    "angular-ui-bootstrap": "^0.12.1",
+    "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.3",
     "bootstrap": "^3.3.7",
     "javascript-detect-element-resize": "^0.5.3",

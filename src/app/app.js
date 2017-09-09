@@ -1,7 +1,7 @@
 import 'angular';
 import 'angular-ui-router';
 import 'angular-gridster';
-import '../../node_modules/angular-ui-bootstrap/ui-bootstrap-tpls.min.js';
+import 'angular-ui-bootstrap';
 import 'javascript-detect-element-resize';
 
 
@@ -89,15 +89,15 @@ app.controller('DashboardCtrl', ['$scope', '$timeout',
 	}
 ]);
 
-app.controller('CustomWidgetCtrl', ['$scope', '$modal',
-	function($scope, $modal) {
+app.controller('CustomWidgetCtrl', ['$scope', '$uibModal',
+	function($scope, $uibModal) {
 
 		$scope.remove = function(widget) {
 			$scope.dashboard.widgets.splice($scope.dashboard.widgets.indexOf(widget), 1);
 		};
 
 		$scope.openSettings = function(widget) {
-			$modal.open({
+			$uibModal.open({
 				scope: $scope,
 				templateUrl: 'templates/widget_settings.html',
 				controller: 'WidgetSettingsCtrl',
