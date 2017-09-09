@@ -21,7 +21,8 @@
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^1.0.3",
     "bootstrap": "^3.3.7",
-    "javascript-detect-element-resize": "^0.5.3"
+    "javascript-detect-element-resize": "^0.5.3",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",

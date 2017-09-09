@@ -1,7 +1,15 @@
-import widgetSettingsTemplate from '../templates/widget_settings.html';
+import _ from 'lodash';
+
+import widgetSettingsTemplate from '../../templates/widget_settings.html';
 
 const injectParams = ['$scope', '$uibModal'];
-const CustomWidgetCtrl = function($scope, $uibModal) {
+const OtherWidgetCtrl = function($scope, $uibModal) {
+
+  $scope.title = 'Other';
+
+  $scope.dashboard = _.find($scope.dashboards, function (d) {
+    return d.name === $scope.title;
+  }); 
 
 	$scope.remove = function(widget) {
 		$scope.dashboard.widgets.splice($scope.dashboard.widgets.indexOf(widget), 1);
@@ -22,5 +30,5 @@ const CustomWidgetCtrl = function($scope, $uibModal) {
 
 };
 
-CustomWidgetCtrl.$inject = injectParams;
-export { CustomWidgetCtrl };
+OtherWidgetCtrl.$inject = injectParams;
+export { OtherWidgetCtrl };

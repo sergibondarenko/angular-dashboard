@@ -1,5 +1,5 @@
-const injectParams = ['$scope', '$timeout'];
-const DashboardCtrl = function ($scope, $timeout) {
+const injectParams = ['$scope', '$timeout', '$location'];
+const DashboardCtrl = function ($scope, $timeout, $location) {
 
 	$scope.gridsterOptions = {
 		margins: [20, 20],
@@ -10,9 +10,10 @@ const DashboardCtrl = function ($scope, $timeout) {
 	};
 
 	$scope.dashboards = {
-		'1': {
+		'home': {
 			id: '1',
 			name: 'Home',
+      view: 'home',
 			widgets: [{
 				col: 0,
 				row: 0,
@@ -27,9 +28,10 @@ const DashboardCtrl = function ($scope, $timeout) {
 				name: "Widget 2"
 			}]
 		},
-		'2': {
+		'other': {
 			id: '2',
 			name: 'Other',
+      view: 'other',
 			widgets: [{
 				col: 1,
 				row: 1,
@@ -58,19 +60,11 @@ const DashboardCtrl = function ($scope, $timeout) {
 		});
 	};
 
-	$scope.$watch('selectedDashboardId', function(newVal, oldVal) {
-		if (newVal !== oldVal) {
-			$scope.dashboard = $scope.dashboards[newVal];
-		} else {
-			$scope.dashboard = $scope.dashboards[1];
-		}
-	});
-
-	// init dashboard
-	$scope.selectedDashboardId = '1';
+  $scope.setCurrentDashboard = function (name) {
+    $scope.dashboard = $scope.dashboards[name];
+  };
 
 };
-
 
 DashboardCtrl.$inject = injectParams;
 export { DashboardCtrl };
