@@ -13,7 +13,7 @@ import { DashboardCtrl } from './controllers/dashboardController';
 import { CustomWidgetCtrl } from './controllers/customWidgetController';
 import { WidgetSettingsCtrl } from './controllers/widgetSettingsController';
 
-import { Object2Array } from './services/object2Array.js';
+import { Object2Array } from './filters/object2Array.js';
 
 const app = angular.module('dashboardApp', [
     'ui.router',
