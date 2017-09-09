@@ -145,18 +145,18 @@ app.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope', '$uibM
 		}];
 
 		$scope.dismiss = function() {
-			$modalInstance.dismiss();
+			$uibModalInstance.dismiss();
 		};
 
 		$scope.remove = function() {
 			$scope.dashboard.widgets.splice($scope.dashboard.widgets.indexOf(widget), 1);
-			$modalInstance.close();
+			$uibModalInstance.close();
 		};
 
 		$scope.submit = function() {
 			angular.extend(widget, $scope.form);
 
-			$modalInstance.close(widget);
+			$uibModalInstance.close(widget);
 		};
 
 	}
