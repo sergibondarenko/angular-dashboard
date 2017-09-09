@@ -1,2 +1,2 @@
 # angular-dashboard
-Angular 1.5 dashboard app with widgets
+Angular 1.6 dashboard app with widgets
