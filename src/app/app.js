@@ -9,7 +9,7 @@ import '../style/style-common.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'angular-gridster/dist/angular-gridster.min.css';
 
-import widgetSettings from './templates/widget_settings.html';
+import widgetSettingsTemplate from './templates/widget_settings.html';
 
 const app = angular.module('dashboardApp', [
     'ui.router',
@@ -105,7 +105,7 @@ app.controller('CustomWidgetCtrl', ['$scope', '$uibModal',
 		$scope.openSettings = function(widget) {
 			$uibModal.open({
 				scope: $scope,
-				templateUrl: widgetSettings,
+				template: widgetSettingsTemplate,
 				controller: 'WidgetSettingsCtrl',
 				resolve: {
 					widget: function() {
@@ -118,8 +118,8 @@ app.controller('CustomWidgetCtrl', ['$scope', '$uibModal',
 	}
 ]);
 
-app.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope', '$modalInstance', 'widget',
-	function($scope, $timeout, $rootScope, $modalInstance, widget) {
+app.controller('WidgetSettingsCtrl', ['$scope', '$timeout', '$rootScope', '$uibModalInstance', 'widget',
+	function($scope, $timeout, $rootScope, $uibModalInstance, widget) {
 		$scope.widget = widget;
 
 		$scope.form = {
