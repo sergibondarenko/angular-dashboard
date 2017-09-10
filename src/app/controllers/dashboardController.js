@@ -1,5 +1,5 @@
-const injectParams = ['$scope', '$timeout', '$location'];
-const DashboardCtrl = function ($scope, $timeout, $location) {
+const injectParams = ['$scope', '$timeout', 'StorageService'];
+const DashboardCtrl = function ($scope, $timeout, StorageService) {
 
 	$scope.gridsterOptions = {
 		margins: [20, 20],
@@ -48,8 +48,13 @@ const DashboardCtrl = function ($scope, $timeout, $location) {
 		}
 	};
 
+  $scope.dashboard = $scope.dashboards.home;
+  StorageService.saveDashboards($scope.dashboards);
+
 	$scope.clear = function() {
 		$scope.dashboard.widgets = [];
+    $scope.dashboards[$scope.dashboard.view] = $scope.dashboard;
+    StorageService.saveDashboards($scope.dashboards);
 	};
 
 	$scope.addWidget = function() {
@@ -58,6 +63,8 @@ const DashboardCtrl = function ($scope, $timeout, $location) {
 			sizeX: 1,
 			sizeY: 1
 		});
+    $scope.dashboards[$scope.dashboard.view] = $scope.dashboard;
+    StorageService.saveDashboards($scope.dashboards);
 	};
 
   $scope.setCurrentDashboard = function (name) {

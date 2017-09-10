@@ -10,13 +10,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'angular-gridster/dist/angular-gridster.min.css';
 
 import { DashboardCtrl } from './controllers/dashboardController';
-import { WidgetSettingsCtrl } from './controllers/widgetSettingsController';
 
-import { HomeWidgetCtrl } from './views/home/homeWidgetController';
-import HomeWidgetCtrlTemplate from './views/home/templates/home_widget.html';
-import { OtherWidgetCtrl } from './views/other/otherWidgetController';
-import OtherWidgetCtrlTemplate from './views/other/templates/other_widget.html';
+import { homeDashboard } from './dashboards/home/homeDashboard.component';
+import { otherDashboard } from './dashboards/other/otherDashboard.component';
+import { aWidget } from './widgets/a_widget/aWidget.component';
 
+import { Storage } from './services/storage.service.js';
 import { Object2Array } from './filters/object2Array.js';
 
 const app = angular.module('dashboardApp', [
@@ -25,7 +24,10 @@ const app = angular.module('dashboardApp', [
     'gridster'
 ])
 .controller('DashboardCtrl', DashboardCtrl)
-.controller('WidgetSettingsCtrl', WidgetSettingsCtrl)
+.component('aWidget', aWidget)
+.component('homeDashboard', homeDashboard)
+.component('otherDashboard', otherDashboard)
+.factory('StorageService', () => new Storage())
 .filter('object2Array', Object2Array);
 
 app.config(function ($urlRouterProvider, $stateProvider) {
@@ -33,15 +35,13 @@ app.config(function ($urlRouterProvider, $stateProvider) {
   const homeState = {
     name: 'home',
     url: '/home',
-    controller: HomeWidgetCtrl,
-    template: HomeWidgetCtrlTemplate
+    component: 'homeDashboard'
   };
 
   const otherState = {
     name: 'other',
     url: '/other',
-    controller: OtherWidgetCtrl,
-    template: OtherWidgetCtrlTemplate
+    component: 'otherDashboard'
   };
 
   $stateProvider.state(homeState);  
