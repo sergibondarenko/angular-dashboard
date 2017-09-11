@@ -1,11 +1,6 @@
 const injectParams = ['widget', '$scope', '$timeout', '$rootScope', '$uibModalInstance'];
 const AWidgetSettingsCtrl = function(widget, $scope, $timeout, $rootScope, $uibModalInstance) {
   const self = this;
-
-  console.log('--- modal');
-  console.log('widget');
-  console.log(widget);
-
   self.widget = widget;
 
 	self.form = {
