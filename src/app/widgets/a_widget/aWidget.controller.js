@@ -1,48 +1,34 @@
-const injectParams = ['$scope', '$timeout', '$rootScope'];
-const WidgetSettingsCtrl = function($scope, $timeout, $rootScope) {
+import _ from 'lodash';
+
+import { AWidgetSettingsCtrl as controller } from './aWidget.settings.controller.js';
+import template from './templates/aWidget.settings.template.html';
+
+const injectParams = ['$scope', '$timeout', '$uibModal', '$rootScope'];
+const AWidgetCtrl = function($scope, $timeout, $uibModal, $rootScope) {
   const self = this;
 
-	self.widget = $scope.$parent.$resolve.widget;
-  self.modalInstance = $scope.$parent.$uibModalInstance;
-  self.dashboard = $scope.$parent.$resolve.dashboard;
+  self.remove = function(widget) {
+    const widgetIndex = _.findIndex(self.dashboard.widgets, function (w) {
+       return w.name === self.widget.name;
+    });
+    self.dashboard.widgets.splice(widgetIndex, 1);
+  };
 
-	self.form = {
-		name: self.widget.name,
-		sizeX: self.widget.sizeX,
-		sizeY: self.widget.sizeY,
-		col: self.widget.col,
-		row: self.widget.row
-	};
-
-	self.sizeOptions = [{
-		id: '1',
-		name: '1'
-	}, {
-		id: '2',
-		name: '2'
-	}, {
-		id: '3',
-		name: '3'
-	}, {
-		id: '4',
-		name: '4'
-	}];
-
-	self.dismiss = function() {
-		self.modalInstance.dismiss();
-	};
-
-	self.remove = function() {
-		self.dashboard.widgets.splice(self.dashboard.widgets.indexOf(self.widget), 1);
-		self.modalInstance.close();
-	};
-
-	self.submit = function() {
-		angular.extend(self.widget, self.form);
-		self.modalInstance.close(self.widget);
+	self.openSettings = function(widget) {
+		$uibModal.open({
+			scope: $scope,
+      controllerAs: '$ctrl',
+      controller,
+      template,
+			resolve: {
+				widget: function() {
+					return self.widget;
+				}
+			}
+		});
 	};
 
 };
 
-WidgetSettingsCtrl.$inject = injectParams;
-export { WidgetSettingsCtrl };
+AWidgetCtrl.$inject = injectParams;
+export { AWidgetCtrl };
