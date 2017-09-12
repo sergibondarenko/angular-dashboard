@@ -4,6 +4,8 @@ import 'angular-gridster';
 import 'angular-ui-bootstrap';
 import 'javascript-detect-element-resize';
 
+import _ from 'lodash';
+
 import '../style/style.css';
 import '../style/style-common.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -32,20 +34,56 @@ const app = angular.module('dashboardApp', [
 
 app.config(function ($urlRouterProvider, $stateProvider) {
 
-  const homeState = {
-    name: 'home',
-    url: '/home',
-    component: 'homeDashboard'
-  };
+	const dashboards = {
+		'home': {
+			id: '1',
+			name: 'Home',
+      view: 'home',
+      url: '/home',
+      component: 'homeDashboard',
+			widgets: [{
+				col: 0,
+				row: 0,
+				sizeY: 1,
+				sizeX: 1,
+				name: "Widget 1"
+			}, {
+				col: 2,
+				row: 1,
+				sizeY: 1,
+				sizeX: 1,
+				name: "Widget 2"
+			}]
+		},
+		'other': {
+			id: '2',
+			name: 'Other',
+      view: 'other',
+      url: '/other',
+      component: 'otherDashboard',
+			widgets: [{
+				col: 1,
+				row: 1,
+				sizeY: 1,
+				sizeX: 2,
+				name: "Other Widget 1"
+			}, {
+				col: 1,
+				row: 3,
+				sizeY: 1,
+				sizeX: 1,
+				name: "Other Widget 2"
+			}]
+		}
+	};
 
-  const otherState = {
-    name: 'other',
-    url: '/other',
-    component: 'otherDashboard'
-  };
-
-  $stateProvider.state(homeState);  
-  $stateProvider.state(otherState);  
+  _.forEach(dashboards, function (d) {
+    $stateProvider.state({
+      name: d.view,
+      url: d.url,
+      component: d.component
+    });
+  });
 
   $urlRouterProvider.otherwise('/home');
 });
