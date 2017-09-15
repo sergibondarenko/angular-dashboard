@@ -31,22 +31,8 @@ const app = angular.module('dashboardApp', [
 .filter('object2Array', Object2Array);
 
 app.config(function ($urlRouterProvider, $stateProvider) {
-
-  const homeState = {
-    name: 'home',
-    url: '/home',
-    component: 'homeDashboard'
-  };
-
-  const otherState = {
-    name: 'other',
-    url: '/other',
-    component: 'otherDashboard'
-  };
-
-  $stateProvider.state(homeState);  
-  $stateProvider.state(otherState);  
-
+  app.stateProvider = $stateProvider;
   $urlRouterProvider.otherwise('/home');
 });
 
+export default app;

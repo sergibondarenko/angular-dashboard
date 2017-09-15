@@ -1,3 +1,6 @@
+import app from '../app';
+import { forEach } from 'lodash';
+
 const injectParams = ['$scope', '$timeout', 'StorageService'];
 const DashboardCtrl = function ($scope, $timeout, StorageService) {
 
@@ -9,44 +12,18 @@ const DashboardCtrl = function ($scope, $timeout, StorageService) {
 		}
 	};
 
-	$scope.dashboards = {
-		'home': {
-			id: '1',
-			name: 'Home',
-      view: 'home',
-			widgets: [{
-				col: 0,
-				row: 0,
-				sizeY: 1,
-				sizeX: 1,
-				name: "Widget 1"
-			}, {
-				col: 2,
-				row: 1,
-				sizeY: 1,
-				sizeX: 1,
-				name: "Widget 2"
-			}]
-		},
-		'other': {
-			id: '2',
-			name: 'Other',
-      view: 'other',
-			widgets: [{
-				col: 1,
-				row: 1,
-				sizeY: 1,
-				sizeX: 2,
-				name: "Other Widget 1"
-			}, {
-				col: 1,
-				row: 3,
-				sizeY: 1,
-				sizeX: 1,
-				name: "Other Widget 2"
-			}]
-		}
-	};
+	$scope.dashboards = StorageService.listDashboards();
+
+  forEach($scope.dashboards, function (dashboard) {
+    console.log(dashboard.url);
+    console.log(dashboard.name);
+    console.log(dashboard.component);
+    app.stateProvider.state({
+      name: dashboard.name,
+      url: dashboard.url,
+      component: dashboard.component
+    });
+  });
 
   $scope.dashboard = $scope.dashboards.home;
   StorageService.saveDashboards($scope.dashboards);
