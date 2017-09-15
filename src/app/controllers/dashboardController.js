@@ -4,20 +4,17 @@ import { forEach } from 'lodash';
 const injectParams = ['$scope', '$timeout', 'StorageService'];
 const DashboardCtrl = function ($scope, $timeout, StorageService) {
 
-	$scope.gridsterOptions = {
-		margins: [20, 20],
-		columns: 4,
-		draggable: {
-			handle: 'h3'
-		}
-	};
+  $scope.gridsterOptions = {
+    margins: [20, 20],
+    columns: 4,
+    draggable: {
+      handle: 'h3'
+    }
+  };
 
-	$scope.dashboards = StorageService.listDashboards();
+  $scope.dashboards = StorageService.listDashboards();
 
   forEach($scope.dashboards, function (dashboard) {
-    console.log(dashboard.url);
-    console.log(dashboard.name);
-    console.log(dashboard.component);
     app.stateProvider.state({
       name: dashboard.name,
       url: dashboard.url,
