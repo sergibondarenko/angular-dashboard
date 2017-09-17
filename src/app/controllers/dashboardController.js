@@ -25,21 +25,21 @@ const DashboardCtrl = function ($scope, $timeout, StorageService) {
   $scope.dashboard = $scope.dashboards.home;
   StorageService.saveDashboards($scope.dashboards);
 
-	$scope.clear = function() {
-		$scope.dashboard.widgets = [];
+  $scope.clear = function() {
+    $scope.dashboard.widgets = [];
     $scope.dashboards[$scope.dashboard.view] = $scope.dashboard;
     StorageService.saveDashboards($scope.dashboards);
-	};
+  };
 
-	$scope.addWidget = function() {
-		$scope.dashboard.widgets.push({
-			name: "New Widget",
-			sizeX: 1,
-			sizeY: 1
-		});
+  $scope.addWidget = function() {
+    $scope.dashboard.widgets.push({
+      name: 'New Widget',
+      sizeX: 1,
+      sizeY: 1
+    });
     $scope.dashboards[$scope.dashboard.view] = $scope.dashboard;
     StorageService.saveDashboards($scope.dashboards);
-	};
+  };
 
   $scope.setCurrentDashboard = function (name) {
     $scope.dashboard = $scope.dashboards[name];

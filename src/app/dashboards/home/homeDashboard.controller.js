@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 const injectParams = ['$scope', 'StorageService'];
 const HomeDashboardCtrl = function($scope, StorageService) {
 
