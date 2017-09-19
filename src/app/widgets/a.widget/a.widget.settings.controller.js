@@ -37,4 +37,4 @@ const AWidgetSettingsCtrl = function(widget, $scope, $timeout, $rootScope, $uibM
 };
 
 AWidgetSettingsCtrl.$inject = injectParams;
-export { AWidgetSettingsCtrl };
+export default AWidgetSettingsCtrl;

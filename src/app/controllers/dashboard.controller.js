@@ -48,4 +48,4 @@ const DashboardCtrl = function ($scope, $timeout, StorageService) {
 };
 
 DashboardCtrl.$inject = injectParams;
-export { DashboardCtrl };
+export default DashboardCtrl;

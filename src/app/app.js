@@ -11,14 +11,13 @@ import '../style/style-common.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'angular-gridster/dist/angular-gridster.min.css';
 
-import { DashboardCtrl } from './controllers/dashboardController';
+import DashboardCtrl from './controllers/dashboard.controller';
 
-import { homeDashboard } from './dashboards/home/homeDashboard.component';
-import { otherDashboard } from './dashboards/other/otherDashboard.component';
-import { aWidget } from './widgets/a_widget/aWidget.component';
+import homeDashboard from './dashboards/home/home.dashboard.component';
+import otherDashboard from './dashboards/other/other.dashboard.component';
+import aWidget from './widgets/a.widget/a.widget.component';
 
-import { Storage } from './services/storage.service.js';
-import { Object2Array } from './filters/object2Array.js';
+import Storage from './services/storage.service.js';
 
 const app = angular.module('dashboardApp', [
   'ui.router',
@@ -29,8 +28,7 @@ const app = angular.module('dashboardApp', [
   .component('aWidget', aWidget)
   .component('homeDashboard', homeDashboard)
   .component('otherDashboard', otherDashboard)
-  .factory('StorageService', () => new Storage())
-  .filter('object2Array', Object2Array);
+  .factory('StorageService', () => new Storage());
 
 app.config(function ($urlRouterProvider, $stateProvider) {
   app.stateProvider = $stateProvider;
